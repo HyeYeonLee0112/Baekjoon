@@ -12,13 +12,25 @@ for line in sys.stdin: #입력 개수는 상수가 아님
 
 maxNum, maxIndex = 0, 0
 
-'''기존 코드
+'''s1: O(n)
 for i in range(len(myList)):
     if(myList[i] > max):
         max = myList[i]
         maxIndex = i
 '''
+
+'''s2: O(n) + O(n)
+
 maxNum = max(myList) 
 maxIndex = myList.index(maxNum)
+'''
+
+#s3:  O(n)  enumerate 사용(값과 인덱스 한번에)
+for index, value in enumerate(myList):
+    if(value > maxNum):
+        maxNum = value
+        maxIndex = index
+
 
 print(maxNum, maxIndex+1)
+
