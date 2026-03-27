@@ -7,13 +7,16 @@ a+b=(k1​+k2​)m+(r1​+r2​)
 import sys
 
 def getTileNums(n, memo):
+    
+    # if(n == 1 or n == 2):
+    #     memo[n] = n
+    #     return n
+
     if(memo.get(n) != None):
         return memo[n]
-
-    for index in range(1, n+1):
-        if(index == 1 or index == 2):
-            memo[index] = index
-            continue
+    memo[1] = 1
+    memo[2] = 2
+    for index in range(3, n+1):
 
         memo[index] = (memo[index-1] + memo[index-2]) % 15746 
     
