@@ -4,24 +4,14 @@
 a+b=(k1​+k2​)m+(r1​+r2​)
 (a+b)modm=((amodm)+(bmodm))modm
 '''
-import sys
 
-def getTileNums(n, memo):
-    
-    # if(n == 1 or n == 2):
-    #     memo[n] = n
-    #     return n
+n = int(input())
 
-    if(memo.get(n) != None):
-        return memo[n]
-    memo[1] = 1
-    memo[2] = 2
-    for index in range(3, n+1):
+dp = [0] * (n + 1)
+dp[0] = 1
+dp[1] = 1
 
-        memo[index] = (memo[index-1] + memo[index-2]) % 15746 
-    
-    return memo[n]
+for i in range(2, n+1):
+    dp[i] = (dp[i-1] + dp[i-2]) % 15746
 
-n = int(sys.stdin.readline())
-memo = dict()
-print(getTileNums(n, memo))
+print(dp[n])
